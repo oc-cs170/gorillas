@@ -10,6 +10,7 @@ class Gorilla(pygame.sprite.Sprite):
         self.sheet = pygame.image.load("donkeykong_enemies_sheet.png")
         self.art.blit(self.sheet, (0, 0), self.rect)
         
+        
         if player == 1:
             position = random.randint(1,3)
         elif player == 2:
