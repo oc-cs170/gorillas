@@ -85,7 +85,7 @@ class Gorillas(object):
 
         while running:
             # Max frames per second
-            self.clock.tick(FPS)  
+            self.clock.tick(FPS)
 
             # Phase 1: player1's angle input                  # Phase 4: player2's angle input
             # Phase 2: player2's velocity input               # Phase 5: players2's velcity input
@@ -99,7 +99,13 @@ class Gorillas(object):
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running = False
-                    
+                    elif event.key == pygame.K_m:
+                        if self.phase == 1:
+                            self.gorilla.move
+                            self.phase = 4
+                        elif self.phase == 4:
+                            self.gorilla.move
+                            self.phase = 1
                     # When Backspace button is pressed
                     elif event.key == pygame.K_BACKSPACE:
                         if self.phase == 1 or self.phase == 4:
@@ -115,7 +121,8 @@ class Gorillas(object):
                             self.banana = Banana(int(self.angle), int(self.velocity) / 3, self.wind, self.gorilla.rect.topleft)
                         # Player2's banana is thrown, Phase = 6
                         if self.phase == 6:
-                            self.banana = Banana(180 - int(self.angle), int(self.velocity) / 3, self.wind, self.gorilla2.rect.topleft)    
+                            self.banana = Banana(180 - int(self.angle), int(self.velocity) / 3, self.wind, self.gorilla2.rect.topleft)
+                    
 
                     else:
                         if self.phase == 1 or self.phase == 4:
