@@ -16,6 +16,7 @@ class Gorilla(pygame.sprite.Sprite):
         self.stand = self.sheet.subsurface(pygame.Rect(104, 56, 40, 32))
         self.throw_right = self.sheet.subsurface(pygame.Rect(152, 56, 48, 32))
 
+       
         # This is where the gorilla stands
         self.rect = pygame.Rect(0, 0, 40, 32)
         self.image = self.stand
@@ -26,11 +27,15 @@ class Gorilla(pygame.sprite.Sprite):
         # Gorilla image for player2 is randomly placed on the right of the screen.
         elif player == 2:
             position = random.randint(-3,-2)
-
+            
+        # Move function
+        self.move = random.randint(1,2) or random.randint(-3,-2)
+        
         # The center of the gorilla is the center of the building
         self.rect.centerx = self.buildings[position].rect.centerx
         # The bottom of the gorilla is the top of the building
         self.rect.bottom = self.buildings[position].rect.top
+
         
     def update(self, phase):
 
